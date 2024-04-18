@@ -6,9 +6,7 @@
 int main()
 {
 	float* p = new float []{ 1 };
-	delete[] p;
-	p = new float[] {2};
-	std::cout << *p;
+	MDP_map a(p);
 	//float s[] = {
 	//	2,  2,  2,  2,  2,  2,
 	//	2,  0,  0,  0,  1,  2,
