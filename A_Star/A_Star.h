@@ -10,10 +10,6 @@
 #define RIGHT 1
 class AStar_node
 {
-	enum movement
-	{
-		up=UP,down=DOWN,left=LEFT,right=RIGHT,stay=0
-	};
 	int _cur, _value, _zero_pos;
 
 public:
