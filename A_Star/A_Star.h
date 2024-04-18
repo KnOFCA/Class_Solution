@@ -2,6 +2,7 @@
 #include <iostream>
 #include <queue>
 #include <unordered_map>
+#include <format>
 
 #define MAX_MAP_SIZE 9
 #define UP -3
@@ -92,6 +93,8 @@ class AStar_runner
 	int _max_step;
 	bool _is_found;
 
+	std::vector<int> trace(int hash);
+
 public:
 	AStar_runner(const AStar_node& init_state, const AStar_node& dst_state, int max_step):_max_step(max_step)
 	{
@@ -107,7 +110,6 @@ public:
 	~AStar_runner() = default;
 
 	void run();
-	std::vector<int> trace(int hash);
 
 
 	bool check() const

@@ -73,7 +73,22 @@ void AStar_runner::run()
 		if (min_node == _dst) {
 			_is_found = true;
 			std::vector<int> res = trace(min_node.get_hash());
-			for (auto& out : res)std::cout << out << std::endl;
+			int round = 0;
+			for (auto p = res.rbegin(); p != res.rend(); p++) {
+				int num = *p;
+				int cnt = 1;
+				std::cout << std::format("round {}: \n", round);
+				while (num) {
+					std::cout << (num % 10) << " ";
+					num /= 10;
+					cnt++;
+					if (cnt == 4) {
+						std::cout << std::endl;
+						cnt = 1;
+					}
+				}
+				round++;
+			}
 		}
 	}
 	if (_open_set.empty())std::cout << "no solution";
