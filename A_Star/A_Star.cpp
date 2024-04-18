@@ -18,7 +18,6 @@ void AStar_node::cul_value(const AStar_node& dst,int round)
 AStar_node AStar_node::move(int mov)
 {
 	AStar_node cpy(*this);
-	cpy._par = this;
 	int zero_pos = cpy._zero_pos;
 	int mov_pos = zero_pos + mov;
 	if (mov_pos < 0 || mov_pos > 8 ||
@@ -34,15 +33,15 @@ AStar_node AStar_node::move(int mov)
 }
 
 //TODO:find a way to trace back node
-std::vector<AStar_node> AStar_node::trace()
+std::vector<int> AStar_runner::trace(int hash)
 {
-	std::vector<AStar_node> ret;
-	AStar_node cur(*this);
-	ret.push_back(cur);
-	while (cur._par != nullptr) {
-		cur = *cur._par;
-		ret.push_back(cur);
-	}
+	std::vector<int> ret;
+	int num = hash;
+	do
+	{
+		ret.push_back(num);
+		num = _trace_map[num];
+	} while (num);
 	return ret;
 }
 
@@ -65,15 +64,16 @@ void AStar_runner::run()
 		for (auto& node : mov_array) {
 			if (node.get_hash() != 0)
 				if (!_close_set[node.get_hash()]) {
+					if(!_trace_map[node.get_hash()])
+					_trace_map[node.get_hash()] = min_node.get_hash();
 					node.cul_value(_dst, i);
 					_open_set.push(node);
 				}
 		}
 		if (min_node == _dst) {
 			_is_found = true;
-			std::vector<AStar_node> out(min_node.trace());
-			for (auto& node : out)
-				std::cout << node << std::endl;
+			std::vector<int> res = trace(min_node.get_hash());
+			for (auto& out : res)std::cout << out << std::endl;
 		}
 	}
 	if (_open_set.empty())std::cout << "no solution";

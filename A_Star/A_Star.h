@@ -15,13 +15,11 @@ class AStar_node
 		up=UP,down=DOWN,left=LEFT,right=RIGHT,stay=0
 	};
 	int _cur, _value, _zero_pos;
-	AStar_node* _par;
-	//movement _cur_move;
 
 public:
 	template<std::size_t N>
 		requires (N == MAX_MAP_SIZE)
-	AStar_node(int(&cur)[N]):_value(int()),_par(nullptr)
+	AStar_node(int(&cur)[N]):_value(int())
 	{
 		_cur = 0;
 		int pow = 1;
@@ -37,7 +35,6 @@ public:
 		_cur = 0;
 		_value = 0;
 		_zero_pos = 0;
-		_par = nullptr;
 	}
 
 	AStar_node(const AStar_node& other)
@@ -45,7 +42,6 @@ public:
 		_cur = other._cur;
 		_value = other._value;
 		_zero_pos = other._zero_pos;
-		_par = other._par;
 	}
 
 	template<std::size_t N>
@@ -90,25 +86,13 @@ public:
 
 	void cul_value(const AStar_node& dst, int round);
 	AStar_node move(int mov);
-	std::vector<AStar_node> trace();
-};
-
-struct AStar_tree
-{
-	int val;
-	AStar_tree* par;
-
-	AStar_tree() :val(), par(nullptr) {}
-	AStar_tree(AStar_tree* par) :val(), par(par) {};
-	AStar_tree(int val, AStar_tree* par) :val(val), par(par) {};
 };
 
 class AStar_runner
 {
 	std::priority_queue<AStar_node,std::vector<AStar_node>,std::greater<AStar_node>> _open_set;
-	std::unordered_map<int,int> _close_set;
+	std::unordered_map<int,int> _close_set,_trace_map;
 	AStar_node _dst;
-	AStar_tree root;
 	int _max_step;
 	bool _is_found;
 
@@ -119,7 +103,7 @@ public:
 		else _is_found = false;
 		_open_set.push(init_state);
 		_dst = dst_state;
-		root = new AStar_tree(init_state.get_hash(), nullptr);
+		_trace_map.insert({ init_state.get_hash(),0 });
 	}
 
 	AStar_runner() = delete;
@@ -127,6 +111,8 @@ public:
 	~AStar_runner() = default;
 
 	void run();
+	std::vector<int> trace(int hash);
+
 
 	bool check() const
 	{
