@@ -140,7 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="A_Star.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="AS_main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="A_Star.h" />

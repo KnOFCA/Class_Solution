@@ -15,12 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MDP_main.cpp">
+    <ClCompile Include="DT_main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Decision_Tree.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Tools.h">
+    <ClInclude Include="Decision_Tree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

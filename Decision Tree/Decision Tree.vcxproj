@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{be98e1f0-40fe-4e53-9d1e-fe22d152b160}</ProjectGuid>
-    <RootNamespace>MDPSolution</RootNamespace>
+    <ProjectGuid>{2ddbb8e6-68ff-4d3f-81ae-3b8eaafa0379}</ProjectGuid>
+    <RootNamespace>DecisionTree</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -137,10 +137,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MDP_main.cpp" />
+    <ClCompile Include="Decision_Tree.cpp" />
+    <ClCompile Include="DT_main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Tools.h" />
+    <ClInclude Include="Decision_Tree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
