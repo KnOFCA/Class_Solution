@@ -1,7 +1,7 @@
 #include "A_Star.h"
-void AStar_node::cul_value(const AStar_node& dst,int round)
+void AStar_node::cul_value(const AStar_node& dst)
 {
-	_value = round;
+	_value = _h_value;
 	for (int i = 0; i < MAX_MAP_SIZE; i++)
 	{
 		int cnt = 0;
@@ -29,6 +29,7 @@ AStar_node AStar_node::move(int mov)
 	}
 	cpy._cur = cpy._cur + cpy[mov_pos] * std::pow(10, zero_pos) - cpy[mov_pos] * std::pow(10, mov_pos);
 	cpy._zero_pos = mov_pos;
+	cpy._h_value = this->_h_value + 1;
 	return cpy;
 }
 
@@ -63,12 +64,15 @@ void AStar_runner::run()
 			min_node.move(RIGHT) };
 		for (auto& node : mov_array) {
 			if (node.get_hash() != 0)
+			{
 				if (!_close_set[node.get_hash()]) {
+					//TODO:some
 					if(!_trace_map[node.get_hash()])
 					_trace_map[node.get_hash()] = min_node.get_hash();
-					node.cul_value(_dst, i);
+					node.cul_value(_dst);
 					_open_set.push(node);
 				}
+			}
 		}
 		if (min_node == _dst) {
 			_is_found = true;
@@ -76,9 +80,9 @@ void AStar_runner::run()
 			int round = 0;
 			for (auto p = res.rbegin(); p != res.rend(); p++) {
 				int num = *p;
-				int cnt = 1;
+				int cnt = 1, dgt_num = 9;
 				std::cout << std::format("round {}: \n", round);
-				while (num) {
+				while (dgt_num) {
 					std::cout << (num % 10) << " ";
 					num /= 10;
 					cnt++;
@@ -86,6 +90,7 @@ void AStar_runner::run()
 						std::cout << std::endl;
 						cnt = 1;
 					}
+					dgt_num--;
 				}
 				round++;
 			}

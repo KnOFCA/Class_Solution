@@ -18,7 +18,7 @@ input and output part, easy to read :)
 	
 		where _cur is hash value.
 		- cul_value()
-			calculate node's f-value, where g-value is current round num and h_value is all "off-pos" number's Manhattan distance.
+			calculate node's f-value, where g-value is current layer num and h_value is all "off-pos" number's Manhattan distance.
 		- move()
 			generate new node by current node's moving.
 	- AStar_runner class
@@ -26,5 +26,7 @@ input and output part, easy to read :)
 			run the algorithm and output path(if exist).
 		- check()
 			return if there are ways to transform.
+	- time_count class
+		- count code's running time.
 - A_Star.cpp
 	implement A_Star.h

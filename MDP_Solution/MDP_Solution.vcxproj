@@ -140,7 +140,7 @@
     <ClCompile Include="MDP_main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Tools.h" />
+    <ClInclude Include="MDP.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
