@@ -1,0 +1,28 @@
+digraph {
+	2135130210800 [label="Feature 2
+Threshold 1.9"]
+	2135107227168 [label=1 shape=box]
+	2135130210800 -> 2135107227168 [label=True]
+	2135130210704 [label="Feature 2
+Threshold 4.7"]
+	2135130210800 -> 2135130210704 [label=False]
+	2135095468304 [label=2 shape=box]
+	2135130210704 -> 2135095468304 [label=True]
+	2135129964400 [label="Feature 3
+Threshold 1.7"]
+	2135130210704 -> 2135129964400 [label=False]
+	2135129959552 [label="Feature 2
+Threshold 5.0"]
+	2135129964400 -> 2135129959552 [label=True]
+	2135118892672 [label=2 shape=box]
+	2135129959552 -> 2135118892672 [label=True]
+	2135123540240 [label="Feature 0
+Threshold 6.0"]
+	2135129959552 -> 2135123540240 [label=False]
+	2135095468832 [label=2 shape=box]
+	2135123540240 -> 2135095468832 [label=True]
+	2135129616064 [label=3 shape=box]
+	2135123540240 -> 2135129616064 [label=False]
+	2135129964160 [label=3 shape=box]
+	2135129964400 -> 2135129964160 [label=False]
+}
