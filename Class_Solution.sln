@@ -3,44 +3,52 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDP_Solution", "MDP_Solution\MDP_Solution.vcxproj", "{BE98E1F0-40FE-4E53-9D1E-FE22D152B160}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "A_Star", "A_Star\A_Star.vcxproj", "{181517E8-83C5-456D-9940-2CF9DE925862}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Decision Tree", "Decision Tree\Decision Tree.vcxproj", "{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MDP_Solution", "PythonApplication1\MDP_Solution.pyproj", "{A507DBEC-3CA1-4CA3-9C45-A2C13988A997}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BE98E1F0-40FE-4E53-9D1E-FE22D152B160}.Debug|x64.ActiveCfg = Debug|x64
-		{BE98E1F0-40FE-4E53-9D1E-FE22D152B160}.Debug|x64.Build.0 = Debug|x64
-		{BE98E1F0-40FE-4E53-9D1E-FE22D152B160}.Debug|x86.ActiveCfg = Debug|Win32
-		{BE98E1F0-40FE-4E53-9D1E-FE22D152B160}.Debug|x86.Build.0 = Debug|Win32
-		{BE98E1F0-40FE-4E53-9D1E-FE22D152B160}.Release|x64.ActiveCfg = Release|x64
-		{BE98E1F0-40FE-4E53-9D1E-FE22D152B160}.Release|x64.Build.0 = Release|x64
-		{BE98E1F0-40FE-4E53-9D1E-FE22D152B160}.Release|x86.ActiveCfg = Release|Win32
-		{BE98E1F0-40FE-4E53-9D1E-FE22D152B160}.Release|x86.Build.0 = Release|Win32
+		{181517E8-83C5-456D-9940-2CF9DE925862}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{181517E8-83C5-456D-9940-2CF9DE925862}.Debug|Any CPU.Build.0 = Debug|x64
 		{181517E8-83C5-456D-9940-2CF9DE925862}.Debug|x64.ActiveCfg = Debug|x64
 		{181517E8-83C5-456D-9940-2CF9DE925862}.Debug|x64.Build.0 = Debug|x64
 		{181517E8-83C5-456D-9940-2CF9DE925862}.Debug|x86.ActiveCfg = Debug|Win32
 		{181517E8-83C5-456D-9940-2CF9DE925862}.Debug|x86.Build.0 = Debug|Win32
+		{181517E8-83C5-456D-9940-2CF9DE925862}.Release|Any CPU.ActiveCfg = Release|x64
+		{181517E8-83C5-456D-9940-2CF9DE925862}.Release|Any CPU.Build.0 = Release|x64
 		{181517E8-83C5-456D-9940-2CF9DE925862}.Release|x64.ActiveCfg = Release|x64
 		{181517E8-83C5-456D-9940-2CF9DE925862}.Release|x64.Build.0 = Release|x64
 		{181517E8-83C5-456D-9940-2CF9DE925862}.Release|x86.ActiveCfg = Release|Win32
 		{181517E8-83C5-456D-9940-2CF9DE925862}.Release|x86.Build.0 = Release|Win32
+		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Debug|Any CPU.Build.0 = Debug|x64
 		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Debug|x64.ActiveCfg = Debug|x64
 		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Debug|x64.Build.0 = Debug|x64
 		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Debug|x86.ActiveCfg = Debug|Win32
 		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Debug|x86.Build.0 = Debug|Win32
+		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Release|Any CPU.ActiveCfg = Release|x64
+		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Release|Any CPU.Build.0 = Release|x64
 		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Release|x64.ActiveCfg = Release|x64
 		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Release|x64.Build.0 = Release|x64
 		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Release|x86.ActiveCfg = Release|Win32
 		{2DDBB8E6-68FF-4D3F-81AE-3B8EAAFA0379}.Release|x86.Build.0 = Release|Win32
+		{A507DBEC-3CA1-4CA3-9C45-A2C13988A997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A507DBEC-3CA1-4CA3-9C45-A2C13988A997}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A507DBEC-3CA1-4CA3-9C45-A2C13988A997}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A507DBEC-3CA1-4CA3-9C45-A2C13988A997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A507DBEC-3CA1-4CA3-9C45-A2C13988A997}.Release|x64.ActiveCfg = Release|Any CPU
+		{A507DBEC-3CA1-4CA3-9C45-A2C13988A997}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
