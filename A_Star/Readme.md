@@ -5,7 +5,7 @@ This solution includes mainly 3 files:
 input and output part, easy to read :)
 - A_Star.h:
 	- AStar_node class
-		- using one int to contain the whole map
+		- using one integer to contain the whole map
 		```
 		_cur = 0;
 		int pow = 1;
@@ -16,9 +16,9 @@ input and output part, easy to read :)
 		}
 		```
 	
-		where _cur is hash value.
+		where _cur is the hash value.
 		- cul_value()
-			calculate node's f-value, where g-value is current round num and h_value is all "off-pos" number's Manhattan distance.
+			calculate node's f-value, where g-value is current layer num and h_value is all "off-pos" number's Manhattan distance.
 		- move()
 			generate new node by current node's moving.
 	- AStar_runner class
@@ -26,5 +26,7 @@ input and output part, easy to read :)
 			run the algorithm and output path(if exist).
 		- check()
 			return if there are ways to transform.
+	- time_count class
+		- count code's running time.
 - A_Star.cpp
 	implement A_Star.h

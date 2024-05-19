@@ -3,6 +3,7 @@
 #include <queue>
 #include <unordered_map>
 #include <format>
+#include <chrono>
 
 #define MAX_MAP_SIZE 9
 #define UP -3
@@ -11,12 +12,12 @@
 #define RIGHT 1
 class AStar_node
 {
-	int _cur, _value, _zero_pos;
+	int _cur, _value, _zero_pos, _h_value;
 
 public:
 	template<std::size_t N>
 		requires (N == MAX_MAP_SIZE)
-	AStar_node(int(&cur)[N]):_value(int())
+	AStar_node(int(&cur)[N]):_value(int()), _h_value(int())
 	{
 		_cur = 0;
 		int pow = 1;
@@ -32,6 +33,7 @@ public:
 		_cur = 0;
 		_value = 0;
 		_zero_pos = 0;
+		_h_value = 0;
 	}
 
 	AStar_node(const AStar_node& other)
@@ -39,6 +41,7 @@ public:
 		_cur = other._cur;
 		_value = other._value;
 		_zero_pos = other._zero_pos;
+		_h_value = other._h_value;
 	}
 
 	template<std::size_t N>
@@ -81,7 +84,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, AStar_node t);
 
-	void cul_value(const AStar_node& dst, int round);
+	void cul_value(const AStar_node& dst);
 	AStar_node move(int mov);
 };
 
@@ -115,5 +118,22 @@ public:
 	bool check() const
 	{
 		return _is_found;
+	}
+};
+
+struct time_count
+{
+	std::chrono::steady_clock::time_point start, end;
+	std::chrono::duration<float> period;
+	time_count()
+	{
+		start = std::chrono::high_resolution_clock::now();
+		period = std::chrono::duration<float>();
+	}
+	~time_count()
+	{
+		end = std::chrono::high_resolution_clock::now();
+		period = end - start;
+		std::cout << period.count() << "s\n";
 	}
 };
