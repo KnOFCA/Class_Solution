@@ -66,7 +66,6 @@ void AStar_runner::run()
 			if (node.get_hash() != 0)
 			{
 				if (!_close_set[node.get_hash()]) {
-					//TODO:some
 					if(!_trace_map[node.get_hash()])
 					_trace_map[node.get_hash()] = min_node.get_hash();
 					node.cul_value(_dst);
