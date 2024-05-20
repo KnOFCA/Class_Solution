@@ -18,7 +18,7 @@ input and output part, easy to read :)
 	
 		where _cur is the hash value.
 		- cul_value()
-			calculate node's f-value, where g-value is current layer num and h_value is all "off-pos" number's Manhattan distance.
+			calculate node's f-value, where g-value is current level and h_value is all "off-pos" number's Manhattan distance.
 		- move()
 			generate new node by current node's moving.
 	- AStar_runner class

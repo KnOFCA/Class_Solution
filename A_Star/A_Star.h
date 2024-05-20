@@ -12,12 +12,12 @@
 #define RIGHT 1
 class AStar_node
 {
-	int _cur, _value, _zero_pos, _h_value;
+	int _cur, _value, _zero_pos, _g_value;
 
 public:
 	template<std::size_t N>
 		requires (N == MAX_MAP_SIZE)
-	AStar_node(int(&cur)[N]):_value(int()), _h_value(int())
+	AStar_node(int(&cur)[N]):_value(int()), _g_value(int())
 	{
 		_cur = 0;
 		int pow = 1;
@@ -33,7 +33,7 @@ public:
 		_cur = 0;
 		_value = 0;
 		_zero_pos = 0;
-		_h_value = 0;
+		_g_value = 0;
 	}
 
 	AStar_node(const AStar_node& other)
@@ -41,7 +41,7 @@ public:
 		_cur = other._cur;
 		_value = other._value;
 		_zero_pos = other._zero_pos;
-		_h_value = other._h_value;
+		_g_value = other._g_value;
 	}
 
 	template<std::size_t N>
@@ -72,6 +72,14 @@ public:
 		return _value > other._value;
 	}
 
+	void operator=(const AStar_node& other)
+	{
+		_cur = other._cur;
+		_value = other._value;
+		_zero_pos = other._zero_pos;
+		_g_value = other._g_value;
+	}
+
 	int get_hash() const
 	{
 		return _cur;
@@ -80,6 +88,11 @@ public:
 	int get_value() const
 	{
 		return _value;
+	}
+
+	int get_level() const
+	{
+		return _g_value;
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, AStar_node t);
@@ -96,7 +109,7 @@ class AStar_runner
 	int _max_step;
 	bool _is_found;
 
-	std::vector<int> trace(int hash);
+	std::vector<int> trace(int hash, int round);
 
 public:
 	AStar_runner(const AStar_node& init_state, const AStar_node& dst_state, int max_step):_max_step(max_step)
@@ -105,7 +118,7 @@ public:
 		else _is_found = false;
 		_open_set.push(init_state);
 		_dst = dst_state;
-		_trace_map.insert({ init_state.get_hash(),0 });
+		_trace_map.insert({ init_state.get_hash(),init_state.get_hash() });
 	}
 
 	AStar_runner() = delete;
