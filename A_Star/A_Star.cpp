@@ -1,7 +1,7 @@
 #include "A_Star.h"
 void AStar_node::cul_value(const AStar_node& dst)
 {
-	_value = _h_value;
+	_value = _g_value;
 	for (int i = 0; i < MAX_MAP_SIZE; i++)
 	{
 		int cnt = 0;
@@ -29,19 +29,20 @@ AStar_node AStar_node::move(int mov)
 	}
 	cpy._cur = cpy._cur + cpy[mov_pos] * std::pow(10, zero_pos) - cpy[mov_pos] * std::pow(10, mov_pos);
 	cpy._zero_pos = mov_pos;
-	cpy._h_value = this->_h_value + 1;
+	cpy._g_value = this->_g_value + 1;
 	return cpy;
 }
 
-std::vector<int> AStar_runner::trace(int hash)
+std::vector<int> AStar_runner::trace(int hash, int round)
 {
 	std::vector<int> ret;
-	int num = hash;
+	int num = hash, rnd = round;
 	do
 	{
 		ret.push_back(num);
 		num = _trace_map[num];
-	} while (num);
+		rnd--;
+	} while (rnd != 0);
 	return ret;
 }
 
@@ -52,8 +53,9 @@ std::ostream& operator<<(std::ostream& os, AStar_node t)
 
 void AStar_runner::run()
 {
+	AStar_node min_node(_open_set.top());
 	for (int i = 0; i < _max_step && !_is_found && !_open_set.empty(); i++) {
-		AStar_node min_node(_open_set.top());
+		min_node = _open_set.top();
 		_open_set.pop();
 		_close_set.insert({ min_node.get_hash(),1 });
 		std::vector<AStar_node> mov_array{ 
@@ -72,29 +74,32 @@ void AStar_runner::run()
 				}
 			}
 		}
-		//print results,TODO:consider making it a function.
 		if (min_node == _dst) {
 			_is_found = true;
-			std::vector<int> res = trace(min_node.get_hash());//TODO: trace func doesn't work when only root node exist.
-			int round = 0;
-			for (auto p = res.rbegin(); p != res.rend(); p++) {
-				int num = *p;
-				int cnt = 1, dgt_num = 9;
-				std::cout << std::format("round {}: \n", round);
-				while (dgt_num) {
-					std::cout << (num % 10) << " ";
-					num /= 10;
-					cnt++;
-					if (cnt == 4) {
-						std::cout << std::endl;
-						cnt = 1;
-					}
-					dgt_num--;
-				}
-				round++;
-			}
 		}
 	}
+	//print results,TODO:consider making it a function.
+	if (_is_found == true) {
+		std::vector<int> res = trace(min_node.get_hash(), min_node.get_level() + 1);//TODO: trace func doesn't work when only root node exist.
+		int round = 0;
+		for (auto p = res.rbegin(); p != res.rend(); p++) {
+			int num = *p;
+			int cnt = 1, dgt_num = 9;
+			std::cout << std::format("round {}: \n", round);
+			while (dgt_num) {
+				std::cout << (num % 10) << " ";
+				num /= 10;
+				cnt++;
+				if (cnt == 4) {
+					std::cout << std::endl;
+					cnt = 1;
+				}
+				dgt_num--;
+			}
+			round++;
+		}
+	}
+
 	if (_open_set.empty())std::cout << "no solution";
 }
 
