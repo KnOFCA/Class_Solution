@@ -5,7 +5,7 @@ This solution includes mainly 3 files:
 input and output part, easy to read :)
 - A_Star.h:
 	- AStar_node class
-		- using one integer to contain the whole map
+		- use one integer to contain the whole map
 		```
 		_cur = 0;
 		int pow = 1;
@@ -25,7 +25,7 @@ input and output part, easy to read :)
 		- run()
 			run the algorithm and output path(if exist).
 		- check()
-			return if there are ways to transform.
+			return true if there is at least one way to transform.
 	- time_count class
 		- count code's running time.
 - A_Star.cpp
