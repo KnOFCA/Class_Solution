@@ -73,6 +73,7 @@ void AStar_runner::run()
 				}
 			}
 		}
+		//print results,consider making it a function.
 		if (min_node == _dst) {
 			_is_found = true;
 			std::vector<int> res = trace(min_node.get_hash());
