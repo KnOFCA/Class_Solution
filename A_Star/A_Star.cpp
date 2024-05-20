@@ -78,9 +78,8 @@ void AStar_runner::run()
 			_is_found = true;
 		}
 	}
-	//print results,TODO:consider making it a function.
 	if (_is_found == true) {
-		std::vector<int> res = trace(min_node.get_hash(), min_node.get_level() + 1);//TODO: trace func doesn't work when only root node exist.
+		std::vector<int> res = trace(min_node.get_hash(), min_node.get_level() + 1);
 		int round = 0;
 		for (auto p = res.rbegin(); p != res.rend(); p++) {
 			int num = *p;
