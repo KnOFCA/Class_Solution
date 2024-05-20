@@ -33,7 +33,6 @@ AStar_node AStar_node::move(int mov)
 	return cpy;
 }
 
-//TODO:find a way to trace back node
 std::vector<int> AStar_runner::trace(int hash)
 {
 	std::vector<int> ret;
@@ -73,10 +72,10 @@ void AStar_runner::run()
 				}
 			}
 		}
-		//print results,consider making it a function.
+		//print results,TODO:consider making it a function.
 		if (min_node == _dst) {
 			_is_found = true;
-			std::vector<int> res = trace(min_node.get_hash());
+			std::vector<int> res = trace(min_node.get_hash());//TODO: trace func doesn't work when only root node exist.
 			int round = 0;
 			for (auto p = res.rbegin(); p != res.rend(); p++) {
 				int num = *p;
